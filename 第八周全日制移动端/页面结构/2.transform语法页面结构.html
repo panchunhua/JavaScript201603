@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        .stage{
+            width: 367px;
+            height: 297px;
+            /*background: url(images/bg-grid.jpg) no-repeat;*/
+            position:relative;
+            transform-style: preserve-3d;
+            perspective: 2000px;/*近大远小*/
+        }
+        /*下面的这个是将图片居中,两张图片堆叠在一起,一张设置成透明的好对比*/
+        .stage img{
+            width: 142px;
+            height: 200px;
+            position: absolute;
+            left:50%;
+            top:50%;
+            margin: -100px 0 0 -71px;
+
+        }
+        /*这张图片是用来对比的*/
+        /*.stage img:nth-child(1){*/
+            /*opacity: 0.5;*/
+
+        /*}*/
+        .stage img:nth-child(1){
+            transform: translateZ(-300px);
+        }
+        /*
+        css3变形属性transform
+        //2D变形的方法
+        transform:rotate(45deg) 正->顺时针 负 逆时针
+        transform :scale(0.2) 默认值是1,大于1是放大,小于1缩小
+        transform:skew(15deg,0)  水平方向 正->左倾斜  负 ->右倾斜  垂直方向 正->向下倾斜  负 ->向上倾斜
+        transform : translate(100px);
+        以上四个方法可以合在一起写,但是注意顺序
+        默认的基准点都是中心点 rotate/ scale/skew可以改变基准点 ,translate的基准点只能是终点
+        transform-origin:center;
+        rotate/skew会改变x轴.y轴方向 translate是会影响当前元素变形的基准点
+        //3D变形方法
+        transform:rotateX(45deg);上下翻转  正:往前倾  负:往后仰
+        transform:rotateY(45deg); 左右翻  正:往手右边翻 负:往手左边翻
+        transform:translateZ(100px) 正:视觉上物体会看到方大,负的值会看到缩小
+        transform:translate3d(x,y,z);x轴方向偏移,y轴方法偏移 ,z轴方向偏移
+        transform-style:preserve-3d  元素是在3d空间里展示
+        perspective:2000px 视距  隔着多远去看这个物体
+
+        animation动画(关键帧动画):1.声明关键帧动画 2.通过animation属性调用下声明的关键帧动画
+
+        */
+
+        @keyframes move{
+            0%{
+               transform: scale(0.1);
+            }
+            10%{
+                transform: scale(1);
+            }
+            50%{
+                transform: scale(2);
+            }
+            100%{
+                transform: scale(0.1);
+            }
+        }
+       /* @-webkit-keyframes 关键帧动画名 {
+
+        }*/
+        /*
+         animation语法
+         animation-name :关键帧动画名
+         animation-duration:动画执行的时间
+         animation-timing-function :动画类型 (默认值)
+         animation-delay:动画延迟时间 默认值:0
+         animation-iteration-count:动画执行的次数 1次或者infinite(无限循环次)
+        animation-play-state:running/paused 动画是否运行 默认值(running)
+         animation-fill-mode : none(默认值)/forwards(最后一帧的位置)/backwards(默认的开始的位置) /both(效果和forwards一样)
+
+
+        animation:move 1s infinite forwards
+        */
+
+
+    </style>
+</head>
+<body>
+<div class="stage">
+    <img src="images/pic.jpg">
+</div>
+</body>
+</html>

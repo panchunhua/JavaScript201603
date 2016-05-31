@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height: 100%;
+        }
+        #box{
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        #box .bg{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            left:0;
+            top:0;
+            z-index: 1;
+
+        }
+        #box ul {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            bottom:10%;
+            z-index: 111;
+        }
+        #box ul li{
+           display: inline-block;
+            width: 130px;
+            height: 130px;
+            margin: 0 10px;
+        }
+        #box ul li img{
+            width: 110px;
+            height: 110px;
+            border:10px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+        }
+        :target{/*给当前活动的目标元素增加z-index:10*/
+            z-index: 10;
+        }
+        @keyframes slideLeft {
+            0%{
+                transform: translate(-500px);
+            }
+            100%{
+                transform: translate(0);
+            }
+        }
+        @-webkit-keyframes slideLeft {
+            0%{
+                -webkit-transform: translate(-500px);
+            }
+            100%{
+                -webkit-transform: translate(0);
+            }
+        }
+        #bg1:target{/*当前活动的目标对象是bg1时,增加如下动画效果*/
+            animation:slideLeft 1s 1;
+            -webkit-animation:slideLeft 1s 1;
+        }
+        @keyframes slideTop {
+            0%{
+               transform:translate(0,-500px);
+            }
+            100%{
+                transform: translate(0,0);
+            }
+        }
+        #bg2:target{
+            animation: slideTop 1s 1;
+        }
+
+        @keyframes zoomIn {
+            0%{
+                transform:scale(0.2);
+            }
+            100%{
+                transform: scale(1);
+            }
+        }
+        #bg3:target{
+            animation: zoomIn 1s 1;
+        }
+        @keyframes zoomOut{
+            0%{
+                transform:scale(2);
+            }
+            100%{
+                transform: scale(1);
+            }
+        }
+        #bg4:target{
+            animation: zoomOut 1s 1;
+        }
+
+        @keyframes rotate {
+            0%{
+                transform: scale(0.2) rotate(0deg);
+            }
+            100%{
+                transform: scale(1) rotate(360deg);
+            }
+        }
+        #bg5:target{
+            animation: rotate 1s 1;
+        }
+
+    </style>
+</head>
+<body>
+<div id="box">
+    <img src="images/1.jpg"  class="bg" id="bg1"/>
+    <img src="images/2.jpg"  class="bg" id="bg2"/>
+    <img src="images/3.jpg"  class="bg" id="bg3"/>
+    <img src="images/4.jpg"  class="bg" id="bg4"/>
+    <img src="images/5.jpg"  class="bg" id="bg5"/>
+
+    <ul>
+        <li><a href="#bg1"><img src="images/1.jpg" alt=""/></a></li>
+        <li><a href="#bg2"><img src="images/2.jpg" alt=""/></a></li>
+        <li><a href="#bg3"><img src="images/3.jpg" alt=""/></a></li>
+        <li><a href="#bg4"><img src="images/4.jpg" alt=""/></a></li>
+        <li><a href="#bg5"><img src="images/5.jpg" alt=""/></a></li>
+    </ul>
+<!--
+E:target 匹配url指向的目标元素(E)
+#bg1:target 匹配id名是bg1的目标元素
+:target 当前活动的目标元素
+-->
+</div>
+</body>
+</html>
