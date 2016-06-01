@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+    //Ajax
+    $.ajax({
+        url: "json/test.json",
+        type: "get",
+        dataType: "json",
+        async: false,//->同步 TRUE默认值,异步
+        success: function (data) {
+            console.log(data);
+        }
+    });
+
+    //->JSONP:都是GET请求
+    //我们并没有在URL中写callback,但是jQuery自己添加了callback,并且会自动创建一个随机的函数名-> &callback=jQuery111306164583518095876_1464754874370&_=1464754874371
+    //    $.ajax({
+    //        url: "http://matchweb.sports.qq.com/kbs/calendar?columnId=100000",
+    //        type: "get",
+    //        dataType: "jsonp",
+    //        async: true,//->同步 TRUE默认值,异步
+    //        success: function (data) {
+    //            console.log(data);
+    //        }
+    //    });
+
+    //->把自动生成的callback及随机函数名修改
+    function fn(data) {
+        console.log(data);
+    }
+    $.ajax({
+        url: "http://matchweb.sports.qq.com/kbs/calendar?columnId=100000",
+        type: "get",
+        dataType: "jsonp",
+//        jsonp:"cp",//->修改callback的名字为cp
+        jsonpCallback: "fn"//->修改默认随机创建的那个函数名
+    });
+    //->http://matchweb.sports.qq.com/kbs/calendar?columnId=100000&cp=fn
+
+</script>
+</body>
+</html>
