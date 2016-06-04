@@ -1,0 +1,66 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+/*#main{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: url(4.jpg) no-repeat;
+    background-size:cover;
+}*/
+/*
+background-size :可以设置三种类型的值
+    1) 百分比 ->相当于元素的宽高
+    2) 具体值
+    3) 关键词  cotain/cover 按照背景图原始大小的比例缩放
+        contain 整个背景图显示完整,但是不一定铺满整个容器,出现空白区域
+        cover 可以铺满整个容器,但是背景图可能显示不完整
+    cover原理:
+       容器宽/容器高<=背景图宽/背景图高  按照高来缩放
+       缩放值 = 容器的高/背景图高
+       容器宽/容器高>背景图宽/背景图高 按照宽来缩放
+       缩放值 = 容器的宽/背景图宽
+*/
+
+#main{
+    width: 640px;
+    height: 1008px;
+    position: absolute;
+    left: 50%;
+    margin-left: -320px;
+    top:0;
+    transform-origin: top;
+    -webkit-transform-origin: top;
+}
+#main ul {
+    width: 100%;
+    height: 100%;
+}
+#main ul li{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top:0;
+}
+#main ul li:nth-child(1){
+    background: url(1.jpg) no-repeat;
+}
+#main ul li:nth-child(2){
+    background: url(2.jpg) no-repeat;
+}
+#main ul li:nth-child(3){
+    background: url(3.jpg) no-repeat;
+}
+#main ul li:nth-child(4){
+    background: url(4.jpg) no-repeat;
+}
+#main ul li.zIndex {
+    z-index: 10;
+}

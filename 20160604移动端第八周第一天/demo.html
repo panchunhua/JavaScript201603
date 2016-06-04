@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name = "viewport" content="width=device-width,initial-scale = 1.0,minimum-scale=1.0,maximum-scale=2.0,user-scalable=no"/>
+    <link rel="stylesheet" media="screen and (max-width:600px)" href="small.css"/>
+    <style type="text/css">
+        #div1{
+            width: 200px;
+
+        }
+        @media screen and (max-width: 600px) {
+            /*窗口的宽度小于等于600px时,这边的Css起作用*/
+        }
+        @media screen and (max-device-width: 600px) {
+            /*最大设备宽度是600时,这边的Css起作用*/
+        }
+        @media screen and (min-device-pixel-ratio: 2) {
+            /*最大设备宽度是600时,这边的Css起作用*/
+        }
+        /*普通显示屏*/
+        .css{
+            background-image: url(img_1x.png);
+        }
+
+        /* 高清显示屏(设备像素比例大于等于2)使用2倍图  */
+        @media only screen and (-webkit-min-device-pixel-ratio:2){
+            .css{
+                background-image: url(img_2x.png);
+            }
+        }
+
+        /* 高清显示屏(设备像素比例大于等于3)使用3倍图  */
+        @media only screen and (-webkit-min-device-pixel-ratio:3){
+            .css{
+                background-image: url(img_3x.png);
+            }
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+<!--
+响应式开发 :
+1.适合小型项目 PC端和移动端共用一套页面
+2.大型项目 PC端和移动端各用一套 ,移动端为了适配各种大小的设备,我们还得响应式开发(移动端适配)
+
+设备逻辑像素 (device independent pixels) dip和 css 像素 ->px
+设备像素比 devicePixelRatio
+   1个css像素(px) = 设备像素比(devicePixelRatio)的平方 dip(单位)
+  设备像素比是1时 1css像素 = 1dip
+-->
+<div id="div1">
+    <img src="images/account-thumbnail.png" width="100%">
+</div>
+</body>
+</html>
+<script>
+ var supportsOrientationChange = "onorientationchange" in window;
+   var  orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
+    window.addEventListener(orientationEvent, function () {
+        if (supportsOrientationChange) {
+            if (Math.abs(window.orientation) === 90) {
+                //横屏
+                document.body.style.backgroundColor = "red";
+            } else {
+                //竖屏
+                document.body.style.backgroundColor = "green";
+            }
+        }
+    }, false);
+
+
+</script>

@@ -1,0 +1,135 @@
+*{
+    margin: 0;
+    padding:0;
+    font-family: "Microsoft yahei";
+}
+ul{
+    list-style:none
+}
+.headerLayout{
+    width: 100%;
+    position: fixed;
+    height: 80px;
+    box-shadow: 3px 3px 5px 0 rgba(0,0,0,0.3);
+    background: #fff;
+}
+.header img{
+    float: left;
+    margin-top: 20px;
+}
+.header ul{
+    float: right;
+}
+.header ul li{
+    float: left;
+    line-height: 80px;
+    font-size: 1em;
+    margin: 0 15px;
+}
+@media all and (min-width: 1000px) {
+    .header{
+        width: 1000px;
+        margin:  0 auto;
+    }
+}
+#channel ul{
+    width: 100%;
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+#channel ul li{
+    display: inline-block;
+    margin: 0 1%;
+}
+
+#service ul{
+    text-align: center;
+}
+#service ul li{
+    width: 263px;
+    display: inline-block;
+    vertical-align: top;
+}
+#service ul li h4{
+    font-size: 1.2em;
+}
+#service ul li p{
+    font-size: 1em;
+    line-height: 1.5em;
+}
+
+@media all and (max-width:999px) {
+    .header{
+        width: 100%;
+    }
+    #channel ul li {
+        max-width: 23%;/*图片宽度大于23%时,图片的宽度是23%,小于23%,则以图片本身的大小显示*/
+    }
+    #channel ul li img{
+        width: 100%;
+    }
+    #channel ul li.watch img,#channel ul li.phone img{
+        max-width: 50px;
+    }
+    #service {
+        font-size: 14px;
+    }
+    #service ul li{
+        width: 30%;
+    }
+    #service ul li img{
+        width: 100%;
+    }
+    .header {
+        font-size: 14px;
+    }
+    .header ul li{
+        margin: 0 10px;
+    }
+}
+
+@media all  and (max-width: 480px) {
+     .headerLayout{
+         position: absolute;
+         box-shadow: none;
+         height: 50px;
+         background: palegreen;
+     }
+    .header img{
+        margin-top: 10px;
+    }
+    .header ul{
+        width: 100%;
+        display: none;
+    }
+     .header ul li{
+         float: none;
+         line-height: 50px;
+         background: palegreen;
+         margin: 0;
+     }
+     #channel ul li{
+         width: 48%;
+         max-width: 100%;/*设置max-width值为默认的值*/
+
+     }
+    #channel ul li.watch img,#channel ul li.phone img{
+        max-width: 100px;
+    }
+    #service ul li{
+        width: 100%;
+        margin: 10px 0;
+    }
+    #service ul li img{
+        width: 20px;
+        height: 20px;
+        float: left;
+        margin-right: 20px;
+    }
+    #service ul li p, #service ul li h4{
+        text-align: left;
+    }
+
+}
+
