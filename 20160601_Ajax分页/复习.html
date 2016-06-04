@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script type="text/javascript">
+    //->Ajax只有必要的三步:创建一个Ajax对象、打开一个URL地址、发送请求;xhr.onreadystatechange这一步只是用来接收返回结果才会出现的;
+    //->Ajax中的同步和异步的深入理解:
+    //-->同步:xhr.open && xhr.send 完成后,在并且xhr.readyState=4的时候,本次HTTP事物才算彻底完成(本次Ajax请求结束),才可以继续做其他的事情
+    //-->异步:不需要等待Ajax请求彻底完成,我都可以先把其它的一些事情处理了
+    //    var xhr = new XMLHttpRequest;
+    //    xhr.open("get", "http://localhost:63342/json/test.json", false);
+    //    xhr.onreadystatechange = function () {
+    //        console.log(xhr.readyState);
+    //        if (xhr.readyState === 4 && /^2\d{2}$/.test(xhr.status)) {
+    //
+    //        }
+    //    };
+    //    xhr.send(null);
+
+
+    //->同源和非同源
+    //-->服务器端都会提供一个API URL地址、我们自己客户端(自己的浏览器)地址栏中的URL地址
+    //服务器端:http://localhost:63342/json/test.json
+    //客户端:http://localhost:63342/%E7%AC%AC%E4%B8%89%E6%9C%9F/20160601_Ajax%E5%88%86%E9%A1%B5/%E5%A4%8D%E4%B9%A0.html
+
+    //服务器端:http://matchweb.sports.qq.com/kbs/calendar?callback=calendar&columnId=100000
+    //客户端:http://localhost:63342/%E7%AC%AC%E4%B8%89%E6%9C%9F/20160601_Ajax%E5%88%86%E9%A1%B5/%E5%A4%8D%E4%B9%A0.html
+
+    //->JSONP
+    //-->JSONP需要后台做支持,后台只有支持JSONP我们才可以使用
+    //-->JSONP的原理就是利用SCRIPT不存在跨域这一说,我们把需要请求的URL地址(后台给的)放在SCRIPT的SRC中,并且用问号传递参数的方式,传递一个callback给服务器端(一般我们都用callback这个名字,但是这个名字可以变的,一般都是后台来指定的),callback的值是我们客户端编写的一个函数名；服务器端接收到客户端的请求,把需要给客户端的数据放在传递进来的函数中，然后把callback及里面的参数值一起的返回给客户端,客户端的浏览器进行渲染,渲染过程中把函数执行,此时就可以得到数据了;
+</script>
+<!--
+    "SCRIPT不存在同源或者非同源":SCRIPT标签中,它的SRC属性不仅仅可以把本地的JS文件导入,而且还可以导入其它服务器上的JS文件
+    如果引入的JS走的是304缓存数据,这样以后这个JS文件修改了,我们也无法获取最新的JS代码,为了消除或者是不走缓存的JS,我们可以使用"文件的版本号"或者"时间戳"的方式来进行处理
+-->
+<script type="text/javascript" src="http://imgcache.qq.com/ptlogin/ac/v9/js/ptloginout.js?201606011124"></script>
+
+<script type="text/javascript">
+    function aaaaa(data) {
+        console.log(data);
+    }
+</script>
+<script type="text/javascript" src="http://matchweb.sports.qq.com/kbs/calendar?columnId=100000&callback=aaaaa"></script>
+</body>
+</html>
