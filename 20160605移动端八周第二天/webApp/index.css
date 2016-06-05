@@ -1,0 +1,150 @@
+*{
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);/*去掉a标签,input,button等按钮的默认边框和背景色*/
+    -webkit-overflow-scrolling:touch;/*增加滚动效果,让滚动效果更加流畅*/
+    -webkit-user-select: none;/*禁止用户选中文本内容*/
+    font-family: Helvetica;
+}
+ul{
+    list-style: none;
+}
+
+header{
+    width: 100%;
+    text-align: center;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    font-size: 0.36rem;
+    color: #fff;
+    background: #2a282c;
+    position: absolute;
+    left: 0;
+    top:0;
+}
+header span{
+    position: absolute;
+    left:0.46rem;
+    font-size: 0.3rem;
+}
+header span:before{
+    content: "";
+    width: 0.2rem;
+    height: 0.2rem;
+    position: absolute;
+    left: -0.2rem;
+    top:0.25rem;
+    border-top:2px solid #fff;
+    border-left: 2px solid #fff;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+header ul{
+    position: absolute;
+    right: 0.25rem;
+    top: 0.3rem;
+    width:0.7rem;
+    height: 0.2rem;
+}
+header ul li{
+    width: 0.12rem;
+    height: 0.12rem;
+    border-radius: 50%;
+    float: left;
+    margin: 0 0.02rem;
+    background: #fff;
+}
+.content{
+    position: absolute;
+    top:0.8rem;
+    bottom:1.35rem;
+    left:0;
+    right: 0;
+    overflow: auto;
+}
+.main{
+    width: 6.4rem;
+    height: 4.36rem;
+    background: url(images/banner.png) no-repeat;
+    background-size:100% 100%;
+    /*display: flex;*/
+    /*flex-flow: row wrap;*/
+    /*align-content: center;*/
+    position: relative;
+}
+.score{
+    display: flex;
+    flex-flow: row nowrap;/*排列方式和是否换行*/
+    justify-content: center;
+    align-items: center;
+    font-size: 0.6rem;
+    color: #fff;
+    width: 100%;
+    margin-bottom: 5%;
+}
+.score p:nth-child(1),.score p:nth-child(3){
+    width: 0.84rem;
+    height: 0.84rem;
+}
+.score p:nth-child(2){
+    margin: 0 0.4rem;
+}
+.main .score:nth-child(2){
+    font-size: 0.4rem;
+}
+.main .score:nth-child(1){
+    padding-top: 0.7rem;
+}
+.scoreNumber{
+    height: 0.75rem;
+    line-height: 0.75rem;
+    position: absolute;
+    bottom:0;
+    border-top:1px solid #fff;
+    width: 100%;
+}
+.scoreNumber p{
+    width: 50%;
+    box-sizing: border-box;/*width值是包含padding和border值*/
+    float: left;
+    font-size: 0.3rem;
+    color: #fff;
+    text-align: center;
+}
+.scoreNumber p:nth-child(1){
+    padding-left: 0.35rem;
+}
+.scoreNumber p:nth-child(2){
+    padding-right: 0.35rem;
+}
+.scoreNumber p span{
+    display: block;
+    width: 0.3rem;
+    height: 0.4rem;
+    position: absolute;
+    top:0.1rem
+}
+.scoreNumber p:nth-child(1) span{
+    left: 0.7rem;
+}
+.scoreNumber p:nth-child(2) span{
+    right: 0.7rem;
+}
+.number ul{
+    font-size: 0.28rem;
+    background: #f0f0f0;
+    border-bottom: 1px solid #d7d7d7;
+    padding: 0.2rem 0;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}
+footer{
+    width: 100%;
+    height: 1.35rem;
+    font-size: 0.5rem;
+    background: palegreen;
+    position: absolute;
+    bottom:0;
+    left: 0;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <style type="text/css">
+        /*假设当屏幕宽度是640时,根元素字体大小是100px,是为了方便算*/
+            html{
+                font-size:100px;
+            }
+        @media screen  and (device-width: 320px){
+            html{
+                font-size: 50px;
+            }
+
+        }
+        @media screen  and (device-width: 375px){
+            html{
+                font-size: 58.59375px
+            }
+
+        }
+        #div1{
+            width: 0.84rem;
+            height:0.84rem;
+            background: green;
+        }
+    </style>
+</head>
+<body>
+<!--
+h5页面准备工作:
+1.处理移动适配(解决宽度)
+    度量单位:百分比,em,rem,px可以配媒体查询
+    flexbox(弹性布局) 流式布局
+2.解决高清问题(图片根据设备像素比切三套图)
+3.字体大小
+rem指相对于根元素(html)字体大小
+
+-->
+
+<div id="div1"><img src="img1.png" width="100%"> </div>
+</body>
+</html>
+<script>
+    function flexible(desW){
+        var winW = document.documentElement.clientWidth;
+        var scale = desW/100;
+        if(winW>desW){/*设备宽度大于设计稿宽度时*/
+            document.documentElement.style.fontSize = "100px"
+        }else{
+            document.documentElement.style.fontSize = winW/scale+"px";
+        }
+    }
+    flexible(640);
+
+
+</script>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: flex-start;
+            /*width: 500px;*/
+            width: 900px;
+            list-style: none;
+        }
+        ul li:nth-child(1){
+            flex:3 1 100px ;
+            /*
+            flex-grow  当有剩余空间时,这个扩展比例起作用
+            flex-shrink 子元素溢出容器时,这个收缩比例起作用
+            flex-basis  设置基准值,在这个基准值的基础上收缩或扩展
+            */
+        }
+        ul li:nth-child(2){
+            flex:2 2 300px ;
+        }
+        ul li:nth-child(3){
+            flex:1 2 300px ;
+        }
+
+        /*
+        1.溢出的内容 100+300+300-500 = 200
+        100*1+300*2+300*2 = 1300
+        100 - 1*100/1300*200
+        300 - 2*300/1300*200
+       flexBasis  - (shrinkRatio*flexBasis/shrinkRatio*flexBasis总和)*溢出内容(flexBasis之和-父容器的宽度);
+
+        2.分配多余的空间 900- (100+300+300) = 200;
+        100+3/6*200 = 200;
+        300+ 2/6*200 = 366.666
+        flexBasis+(growRatio/growRatio之和)*(父容器 - flexBasis之和)
+        */
+
+    </style>
+</head>
+<body>
+<ul id="flex-father">
+    <li class="flex-son">111</li>
+    <li class="flex-son">222</li>
+    <li class="flex-son">333</li>
+</ul>
+</body>
+</html>

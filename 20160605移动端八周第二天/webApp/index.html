@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <link rel="stylesheet" href="index.css"/>
+</head>
+<body>
+ <!--   <header></header>
+   <article>
+    <section></section>
+    <section></section>
+    <aside></aside>
+     <nav></nav>
+     <figure>&lt;!&ndash;插图&ndash;&gt;
+        <figcaption></figcaption> &lt;!&ndash;图题&ndash;&gt;
+     </figure>
+       <audio >
+           <source src="" type="audio/mp3">
+           <source src="" type="audio/ogg">
+           <source src="" type="audio/webm">
+       </audio>&lt;!&ndash;音频&ndash;&gt;
+       <video src=""></video> &lt;!&ndash;视频文件&ndash;&gt;
+   </article>
+
+    <footer></footer>-->
+
+<header>
+    <span>返回</span>
+    美国VS西班牙
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</header>
+<article class="content">
+    <section class="main">
+        <div class="score">
+            <p><img src = "images/img1.png" width="100%"></p>
+            <p>180:169</p>
+            <p><img src="images/img2.png" width="100%"> </p>
+        </div>
+        <div class="score">
+            9月22日 9:00
+        </div>
+        <section class="scoreNumber">
+            <p>
+                <span>
+                    <img src="images/img4.png" width="100%">
+                </span>3123454
+            </p>
+            <p>
+                3123454<span>
+                <img src="images/img5.png" width="100%">
+            </span>
+            </p>
+        </section>
+    </section>
+
+    <section class="number">
+        <ul><li>21</li><li>第一节</li><li>21</li></ul>
+        <ul><li>21</li><li>第一节</li><li>21</li></ul>
+        <ul><li>21</li><li>第一节</li><li>21</li></ul>
+        <ul><li>21</li><li>第一节</li><li>21</li></ul>
+
+    </section>
+    <section class="number">
+        <ul><li>21</li><li>第一节</li><li>21</li></ul>
+        <ul><li>21</li><li>第一节</li><li>21</li></ul>
+        <ul><li>21</li><li>第一节</li><li>21</li></ul>
+        <ul><li>21</li><li>第一节</li><li>21</li></ul>
+
+    </section>
+    <section class="number">
+        <ul><li>21</li><li>第一节</li><li>21</li></ul>
+        <ul><li>21</li><li>第一节</li><li>21</li></ul>
+        <ul><li>21</li><li>第一节</li><li>21</li></ul>
+        <ul><li>21</li><li>第一节</li><li>21</li></ul>
+
+    </section>
+    <section class="number">
+        <ul><li>21</li><li>第一节</li><li>21</li></ul>
+        <ul><li>21</li><li>第一节</li><li>21</li></ul>
+        <ul><li>21</li><li>第一节</li><li>21</li></ul>
+        <ul><li>21</li><li>第一节</li><li>21</li></ul>
+
+    </section>
+
+</article >
+<footer>footer</footer>
+
+</body>
+</html>
+<script>
+    function flexible(desW){
+        var winW = document.documentElement.clientWidth;
+        var scale = desW/100;
+        if(winW>desW){/*设备宽度大于设计稿宽度时*/
+            document.documentElement.style.fontSize = "100px"
+        }else{
+            document.documentElement.style.fontSize = winW/scale+"px";
+        }
+    }
+    flexible(640);
+
+</script>
