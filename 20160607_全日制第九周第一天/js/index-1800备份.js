@@ -42,22 +42,31 @@
     };
 }(String.prototype);
 
+//->IScroll实现MATCH区域的局部滚动:MATCH区域下需要有一个总的DIV,IScroll是给MATCH下第一个子元素中的内容进行局部滚动设置的；想让滚动条在MATCH区域显示的话,需要给MATCH区域增加“position: relative”
 var $myScroll = new IScroll("#match", {
-    mouseWheel: true,
-    scrollbars: true,
-    bounce: false,
-    momentum: false
+    mouseWheel: true,//->是否支持鼠标滚轮滚动,默认是FALSE
+    scrollbars: true,//->是否显示滚动条,默认是FALSE
+    bounce: false,//->是否支持到达边界缓冲,默认是TRUE
+    momentum: false//->关闭势能缓冲动画(关闭后提高处理的性能)
+    //useTransform: true,
+    //useTransition: false,//->设置使用css3动画来实现滚动
+    //tap: false,//->是否允许用户在点击里面的内容
+    //bounce: false
+    //bounceEasing: 'elastic',
+    //bounceTime: 1200//->到边界后是否有缓冲的动画
 });
 
-//->计算MATCH区域的高度
+//->计算MATCH区域的高度 && 当屏幕窗口的尺寸发生改变的时候,让MATCH区域的高度也随之变化
 var $match = $(".match"), winH = null;
 $(window).on("load resize", function () {
     winH = document.documentElement.clientHeight || document.body.clientHeight;
     $match.css("height", winH - 40 - 82);
+
+    //->当MATCH区域的高度发生改变我们需要让设置的局部滚动进行刷新
     $myScroll.refresh();
 });
 
-//->进行CALENDAR区域的数据请求
+//->进行CALENDAR区域的数据请求,我们在请求成功数据后需要做的事情比较多,我们可以使用“发布订阅模式”进行回调函数的订阅
 var $calendarCallBackList = $.Callbacks();
 function calendarBind(jsonData) {
     if (jsonData && jsonData["data"]) {
@@ -75,51 +84,37 @@ $.ajax({
 });
 
 //->开始CALENDAR区域的数据绑定
-var $calendarUL = $(".calendarList>ul"),
+var $calendarList = $(".calendarList>ul"),
     minL = 0,
     maxL = 0;
 $calendarCallBackList.add(function (today, data) {
     var str = '';
     $.each(data, function (index, curData) {
-        str += '<li time="' + curData["date"] + '">';
+        str += '<li>';
         str += '<span class="week">' + curData["weekday"] + '</span>';
         str += '<span class="date">' + curData["date"].myFormatTime("{1}-{2}") + '</span>';
         str += '</li>';
     });
-    $calendarUL.html(str).css("width", data.length * 105);
+    $calendarList.html(str).css("width", data.length * 105);
+
+    //->计算最小的LEFT的值
     minL = -((data.length - 7) * 105);
 });
 
 //->开始CALENDAR区域的日期定位:开始的时候定位到当前的日期
-var $calendarList = null;
 $calendarCallBackList.add(function (today, data) {
-    $calendarList = $calendarUL.children("li");
 
-    //->根据当前日期获取到具体的LI
-    var $curTime = $calendarList.filter("[time='" + today + "']");
 
-    //->如果当前日期在LI中并不存在,我们找到其后面最靠近的一个:从第一个LI开始查找,直到遇到一个LI存储的日期比我们当前日期大的结束查找
-    if ($curTime.length === 0) {
-        for (var i = 0; i < $calendarList.length; i++) {
-            var $curLi = $calendarList.eq(i);
-            var n = new Date($curLi.attr("time").replace(/-/g, "/"));//->每一次循环找到的LI中的日期
-            var m = new Date(today.replace(/-/g, "/"));//->当前日期
-            if ((n - m) > 0) {
-                $curTime = $curLi;
-                break;
-            }
-        }
-    }
 
-    //->如果找了一圈还没有我们则显示最后一个即可
-    if ($curTime.length === 0) {
-        $curTime = $calendarList.filter(":last");
-    }
-
-    //->定位到当前$curTime这个位置,这个位置处于7个LI的中间位置:但是到达边界还需要做一个判断
-    var curL = -($curTime.index() * 105) + (3 * 105);
-    curL = curL < minL ? minL : (curL > maxL ? maxL : curL);
-
-    $curTime.addClass("bg");
-    $calendarUL.css("left", curL);
 });
+
+
+
+
+
+
+
+
+
+
+

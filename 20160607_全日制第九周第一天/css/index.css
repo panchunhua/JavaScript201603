@@ -164,6 +164,7 @@ body {
 
 /*--match start--*/
 .match {
+    position: relative;
     overflow: hidden;
 }
 
