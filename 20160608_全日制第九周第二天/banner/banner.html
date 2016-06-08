@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="www.zhufengpeixun.cn"/>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title>珠峰培训轮播图</title>
+    <link type="text/css" rel="stylesheet" href="css/swiper.min.css"/>
+    <link type="text/css" rel="stylesheet" href="css/banner.css"/>
+</head>
+<body>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <img data-src="img/banner/banner1.jpg" class="swiper-lazy"/>
+
+            <div class="swiper-lazy-preloader-white"></div>
+        </div>
+        <div class="swiper-slide">
+            <img data-src="img/banner/banner2.jpg" class="swiper-lazy"/>
+
+            <div class="swiper-lazy-preloader-white"></div>
+        </div>
+        <div class="swiper-slide">
+            <img data-src="img/banner/banner3.jpg" class="swiper-lazy"/>
+
+            <div class="swiper-lazy-preloader-white"></div>
+        </div>
+        <div class="swiper-slide">
+            <img data-src="img/banner/banner4.jpg" class="swiper-lazy"/>
+
+            <div class="swiper-lazy-preloader-white"></div>
+        </div>
+        <div class="swiper-slide">
+            <img data-src="img/banner/banner5.jpg" class="swiper-lazy"/>
+
+            <div class="swiper-lazy-preloader-white"></div>
+        </div>
+    </div>
+
+    <!--如果需要分页器-->
+    <div class="swiper-pagination" id="swiper-paginationFir"></div>
+
+    <!--&lt;!&ndash; 如果需要左右按钮 &ndash;&gt;
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+    &lt;!&ndash; 如果需要滚动条 &ndash;&gt;
+    <div class="swiper-scrollbar"></div>-->
+</div>
+
+<script type="text/javascript" src="js/swiper.min.js"></script>
+<script type="text/javascript">
+    ~function computedFontSize(desW) {
+        var winW = document.documentElement.clientWidth;
+        if (winW > desW) {/*设备宽度大于设计稿宽度时*/
+            document.documentElement.style.fontSize = "100px";
+        } else {
+            document.documentElement.style.fontSize = winW / desW * 100 + "px";
+        }
+    }(750);
+
+    var mySwiper = new Swiper('.swiper-container', {
+        autoplay: 3000,
+        autoplayDisableOnInteraction: false,
+        speed: 300,
+        loop: true,
+        pagination: '.swiper-pagination',
+        lazyLoading: true,
+        lazyLoadingInPrevNext: true,
+        onInit: function () {
+            document.getElementById("swiper-paginationFir").style.display = "block";
+        }
+    });
+</script>
+</body>
+</html>

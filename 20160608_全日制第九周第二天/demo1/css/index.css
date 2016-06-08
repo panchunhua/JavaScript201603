@@ -1,0 +1,256 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+
+    /*--当你触摸并按住触摸目标时候,禁止显示系统默认菜单--*/
+    -webkit-touch-callout: none;
+
+    /*--当用户点击iOS的Safari浏览器中的链接或JavaScript的可点击的元素时,覆盖显示的高亮颜色--*/
+    -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+html {
+    /*--设置的字体大小不会根据浏览器的改变而发生改变,只有写在HTML中才起到作用--*/
+    -webkit-text-size-adjust: none;
+}
+
+body {
+    /*--在移动端由于手机内置的字体包不一样,我们尽量使用“微软雅黑”和“无衬字体”,保证不同手机下字体的样式视觉感良好--*/
+    font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica, sans-serif;
+    font-size: 12px;
+    color: #424242;
+
+    /*--禁止用户选中文字,但是不能给INPUT标签添加这个样式,否则在苹果手机中我们是无法输入内容的--*/
+    -webkit-user-select: none;
+}
+
+header, footer, nav, section, aside, figure, figcaption, article, audio, video {
+    display: block;
+}
+
+input {
+    outline: none;
+}
+
+ul, li {
+    list-style: none;
+}
+
+a, a:hover, a:active, a:visited, a:target {
+    text-decoration: none;
+    color: #424242;
+}
+
+img {
+    display: block;
+    border: none;
+}
+
+.clear:after {
+    display: block;
+    height: 0;
+    content: "";
+    clear: both;
+}
+
+/*---------------------------------------------*/
+
+.header {
+    overflow: hidden;
+}
+
+/*--NAV START--*/
+.nav {
+    height: 36px;
+    background: #5D5D58;
+}
+
+.nav ul {
+    margin: 0 4%;
+}
+
+.nav ul li {
+    float: left;
+}
+
+.nav ul li a {
+    display: block;
+    padding: 0 15px;
+    height: 36px;
+    line-height: 36px;
+    color: #ccc;
+    font-size: 16px;
+}
+
+.nav ul li a:hover {
+    background: #333;
+}
+
+.nav ul li.bg a {
+    color: #333;
+    background: #fff;
+}
+
+/*--NAV END--*/
+
+/*--TOP START--*/
+.top {
+    padding: 0 4%;
+    height: 80px;
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    overflow: hidden;
+}
+
+.top .logo {
+    float: left;
+    margin-top: 20px;
+    width: 167px;
+    height: 40px;
+}
+
+.top .login {
+    float: right;
+    margin-top: 12px;
+    width: 342px;
+    height: 56px;
+}
+
+.top img {
+    width: 100%;
+    height: 100%;
+}
+
+/*--TOP END--*/
+
+/*--NAVTWO START--*/
+
+.navTwo {
+    display: none;
+    height: 60px;
+    border-bottom: 1px solid #ddd;
+    overflow: hidden;
+}
+
+.navTwo div {
+    cursor: pointer;
+}
+
+.navTwo .logo {
+    float: left;
+    padding: 10px 15px;
+    width: 167px;
+    height: 40px;
+    background: url("../img/logo.png") no-repeat center center;
+    background-size: 167px 40px;
+}
+
+.navTwo .search {
+    float: right;
+    padding: 19px 15px;
+    width: 23px;
+    height: 22px;
+    background: url("../img/search.png") no-repeat center center;
+    background-size: 23px 22px;
+}
+
+.navTwo .menu {
+    float: right;
+    padding: 22px 15px;
+    width: 20px;
+    height: 15px;
+    background: url("../img/menu.png") no-repeat center center;
+    background-size: 20px 15px;
+}
+
+/*--NAVTWO END--*/
+
+/*--CONTENT START--*/
+.content {
+    padding: 10px 4%;
+}
+
+.content div {
+    float: left;
+    width: 33%;
+}
+
+.content div img, .content div a, .content div p {
+    display: block;
+    width: 94%;
+}
+
+.content div img {
+    height: 70%;
+}
+
+.content div.last * {
+    margin-left: 6%;
+}
+
+.content div.middle * {
+    margin-left: 3%;
+}
+
+.content div a {
+    line-height: 35px;
+    font-size: 18px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.content div a:hover {
+    text-decoration: underline;
+}
+
+.content div p {
+    line-height: 25px;
+    font-size: 14px;
+}
+
+/*--CONTENT END--*/
+
+/*--在IE6~8下支持@media媒体查询--*/
+@media all and (max-width: 960px) {
+    .navFir {
+        display: none;
+    }
+
+    .navTwo {
+        display: block;
+    }
+}
+
+@media all and (max-width: 720px) {
+    .content div {
+        margin: 10px 0;
+        width: 100%;
+    }
+
+    .content div img, .content div a, .content div p {
+        width: 100%;
+    }
+
+    .content div.last * {
+        margin-left: 0;
+    }
+
+    .content div.middle * {
+        margin-left: 0;
+    }
+}
+
+
+
+
+
+
+

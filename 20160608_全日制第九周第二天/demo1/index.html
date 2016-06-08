@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <!--删除默认的苹果工具栏和菜单栏-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!--控制状态栏显示样式-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!--禁止页面中自动的把数字识别为电话号码-->
+    <meta name="format-detection" content="telephone=no">
+    <!--<a href="tel:13041086186">立即打电话</a>
+    <a href="sms:13041086186">立即发短信</a>-->
+
+    <title>珠峰培训-响应式布局</title>
+    <link type="text/css" rel="stylesheet" href="css/index.css"/>
+
+    <!--
+        如果我们使用的是HTML5中最新的语义化结构标签,在IE6~8下不兼容,我们调取HTML5.min.js,来实现兼容处理,不需要我们额外在写一套结构
+    -->
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="js/HTML5.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<header class="header">
+    <div class="navFir" id="navFir">
+        <nav class="nav">
+            <ul class="clear">
+                <li class="bg"><a href="#">首页</a></li>
+                <li><a href="#">个人与家庭用户</a></li>
+                <li><a href="#">企业用户</a></li>
+                <li><a href="#">运营商用户</a></li>
+            </ul>
+        </nav>
+        <section class="top">
+            <div class="logo"><img src="img/logo.png"/></div>
+            <div class="login"><img src="img/top-lan.jpg"/></div>
+        </section>
+    </div>
+
+    <!--屏幕尺寸低于960PX的时候显示“navTwo”-->
+    <nav class="navTwo" id="navTwo">
+        <div class="logo"></div>
+        <div class="menu"></div>
+        <div class="search"></div>
+    </nav>
+</header>
+
+<section class="content clear" id="content">
+    <div class="fir">
+        <img src="img/has2016_1.jpg"/>
+        <a href="#">加速数字化转型，共建更美好的全联接世界</a>
+
+        <p>全球数字化进程正在加速，在垂直行业、公共服务、个人生活等领域正全方位提升社会效率和个人体验</p>
+    </div>
+
+    <div class="middle">
+        <img src="img/has2016_2.jpg"/>
+        <a href="#">加速数字化转型，共建更美好的全联接世界</a>
+
+        <p>全球数字化进程正在加速，在垂直行业、公共服务、个人生活等领域正全方位提升社会效率和个人体验</p>
+    </div>
+
+    <div class="last">
+        <img src="img/winwin-24-cn.jpg"/>
+        <a href="#">加速数字化转型，共建更美好的全联接世界</a>
+
+        <p>全球数字化进程正在加速，在垂直行业、公共服务、个人生活等领域正全方位提升社会效率和个人体验</p>
+    </div>
+</section>
+
+
+<script type="text/javascript" src="js/index.js"></script>
+</body>
+</html>

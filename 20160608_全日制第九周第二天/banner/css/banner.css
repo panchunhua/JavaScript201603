@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #424242;
+
+    /*--当你触摸并按住触摸目标时候，禁止或显示系统默认菜单--*/
+    -webkit-touch-callout: none;
+
+    /*--当用户点击iOS的Safari浏览器中的链接或JavaScript的可点击的元素时,覆盖显示的高亮颜色--*/
+    -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+    /*--这个不能写在*中,否则苹果手机中文本框内无法输入内容--*/
+    -webkit-user-select: none;
+}
+
+html {
+    /*--设置的字体大小不会根据浏览器的改变而发生改变,只有写在HTML中才起到作用--*/
+    -webkit-text-size-adjust: none;
+}
+
+body {
+    overflow: hidden;
+}
+
+header, footer, nav, section, aside, figure, figcaption, article {
+    display: block;
+}
+
+/*-----------------------------------------------*/
+
+html {
+    font-size: 100px;
+}
+
+.swiper-container, .swiper-wrapper, .swiper-slide {
+    height: 3.5rem;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-pagination {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

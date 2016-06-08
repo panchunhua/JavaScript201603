@@ -178,7 +178,6 @@ $(".calendar").on("click", function (ev) {
 function positionElement(time) {
     var $pos = $match.find(".matchDate[time='" + time + "']");
     if ($pos.length > 0) {
-        console.log($pos[0]);
         $myScroll.scrollToElement($pos[0], 500);
     }
 }
@@ -237,14 +236,3 @@ function bindMatch() {
         jsonpCallback: "gameList"
     });
 }
-
-
-
-
-
-
-
-
-
-
-

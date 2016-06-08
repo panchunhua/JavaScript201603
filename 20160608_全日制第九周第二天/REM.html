@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title>珠峰培训</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            /*--设置页面中REM单位相对的根植,也即是页面中的1REM=100PX--*/
+            font-size: 100px;
+        }
+
+        #div1 {
+            /*--原来需要编写的固定样式xxxPX,现在都按照转化的比例编写成xxxREM,这样以后只要根植发生变化,我们当前元素的宽度和高度都会自己跟着改变--*/
+
+            /*--在移动端响应式布局开发中我们一般不会设置最外围盒子或者容器的宽度值,都让其自己百分比自适应即可--*/
+            margin: 0.2rem;
+            height: 3rem;
+            background: red;
+        }
+
+        /*--REM也是响应式的布局思想,而且是目前最主要和最主流的布局思想,但是在IE6~8下是无法识别的--*/
+    </style>
+    <script type="text/javascript">
+        //->按照设计稿的标准比例,在根据当前屏幕的尺寸,动态的计算出当前页面的REM比例,保证在不同屏幕的下的响应式开发
+        ~function (desW) {
+            var winW = document.documentElement.clientWidth;
+            document.documentElement.style.fontSize = winW / desW * 100 + "px";
+        }(640);
+    </script>
+</head>
+<body>
+<div id="div1"></div>
+</body>
+</html>

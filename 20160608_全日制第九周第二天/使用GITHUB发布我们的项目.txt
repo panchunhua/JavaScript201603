@@ -1,0 +1,27 @@
+->使用GITHUB发布的只能是静态页面(这个页面中可以使用JS-JSONP进行跨域请求实现数据绑定)；我们无法发布使用NODE或者其他后台语言编写的后台程序；
+
+发布的步骤：
+1)登录GITHUB,在GITHUB中创建一个仓库
+
+2)在新创建的仓库中发布一个项目
+
+3)由于我们发布的项目文件都在gh-pages这个分支下，所以我们为了以后操作的方便，把当前项目的默认分支从 master 变为 gh-pages
+
+4)把远程仓库中gh-pages分支下的项目克隆到本地一份
+  $ git clone https://github.com/zhouxiaotian/myFirstProject.git(自己远程仓库的地址)
+
+5)把默认创建的项目文件删除掉(.git不能删除)、把本地最新的文件上传到远程仓库gh-pages这个分支下
+  $ git add -A
+  $ git commit -m"描述"
+  $ git push origin gh-pages
+
+         自己GITHUB用户名          自己仓库名
+  http://zhouxiaotian.github.io/myFirstProject/index.html
+
+  ->如果请求的文件是"index.html"我们可以不写,但是除此之外都要写上具体的目录和文件名
+
+6)把地址生成二维码
+  cli.im
+
+
+
