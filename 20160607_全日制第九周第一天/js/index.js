@@ -94,10 +94,8 @@ $calendarCallBackList.add(function (today, data) {
 var $calendarList = null;
 $calendarCallBackList.add(function (today, data) {
     $calendarList = $calendarUL.children("li");
-
     //->根据当前日期获取到具体的LI
     var $curTime = $calendarList.filter("[time='" + today + "']");
-
     //->如果当前日期在LI中并不存在,我们找到其后面最靠近的一个:从第一个LI开始查找,直到遇到一个LI存储的日期比我们当前日期大的结束查找
     if ($curTime.length === 0) {
         for (var i = 0; i < $calendarList.length; i++) {
@@ -110,7 +108,6 @@ $calendarCallBackList.add(function (today, data) {
             }
         }
     }
-
     //->如果找了一圈还没有我们则显示最后一个即可
     if ($curTime.length === 0) {
         $curTime = $calendarList.filter(":last");
@@ -122,4 +119,132 @@ $calendarCallBackList.add(function (today, data) {
 
     $curTime.addClass("bg");
     $calendarUL.css("left", curL);
+
+    //->开始读取比赛数据,进行数据绑定
+    bindMatch();
+
+    //->定位到指定位置
+    window.setTimeout(function () {
+        positionElement($curTime.attr("time"));
+    }, 300);
 });
+
+//->使用事件委托实现CALENDAR区域的点击操作
+$(".calendar").on("click", function (ev) {
+    var tar = ev.target,
+        $tar = $(tar),
+        $parents = $tar.parents();
+    $parents = $parents.add(tar);//->使用ADD向集合中增加新元素,原始集合默认是不会发生改变的,它会形成一个新的集合返回
+
+    //->左按钮:让整个UL区域向右移动七个LI的位置
+    //->右按钮:让整个UL区域向左移动七个LI的位置
+    var tarLeft = null;
+    if ($parents.hasClass("left") || $parents.hasClass("right")) {
+        if ($calendarUL.attr("isMove") === "true") {
+            return;
+        }
+        if ($parents.hasClass("left")) {
+            tarLeft = parseFloat($calendarUL.css("left")) + 7 * 105;
+            tarLeft = tarLeft > maxL ? maxL : tarLeft;
+        } else {
+            tarLeft = parseFloat($calendarUL.css("left")) - 7 * 105;
+            tarLeft = tarLeft < minL ? minL : tarLeft;
+        }
+        $calendarUL.attr("isMove", true).stop().animate({left: tarLeft}, 500, function () {
+            $(this).attr("isMove", false);
+
+            //->每一次切换结束,让当前区域第一个默认被选中
+            var tarIndex = Math.abs(parseFloat($(this).css("left"))) / 105;
+            $calendarList.eq(tarIndex).addClass("bg").siblings().removeClass("bg");
+
+            //->重新绑定比赛区域的数据
+            bindMatch();
+
+            //->回归顶部
+            $myScroll.scrollTo(0, 0);
+        });
+        return;
+    }
+
+    //->LI:让当前的有选中样式,而其余的移除选中样式
+    var $curLi = $parents.filter("li");
+    if ($curLi.length > 0) {
+        $curLi.addClass("bg").siblings().removeClass("bg");
+        positionElement($curLi.attr("time"));
+    }
+});
+
+//->开始处理和绑定MATCH区域的操作
+function positionElement(time) {
+    var $pos = $match.find(".matchDate[time='" + time + "']");
+    if ($pos.length > 0) {
+        console.log($pos[0]);
+        $myScroll.scrollToElement($pos[0], 500);
+    }
+}
+function gameList(jsonData) {
+    var str = '';
+    if (jsonData) {
+        var data = jsonData["data"];
+        $.each(data, function (key, curAry) {
+            str += '<div class="matchDate" time="' + key + '">';
+            str += '<h2 class="date">' + key.myFormatTime("{1}月{2}日") + '</h2>';
+            str += '<ul class="matchList">';
+            $.each(curAry, function (index, curData) {
+                var linkURL;
+                str += '<li>';
+                str += '<div class="left">';
+                str += '<span class="time">' + curData["startTime"].myFormatTime("{3}:{4}") + '</span>';
+                str += '<span class="type">' + curData["matchDesc"] + '</span>';
+                str += '</div>';
+                str += '<div class="middle">';
+                linkURL = "http://kbs.sports.qq.com/kbsweb/teams.htm?tid=" + curData["leftId"] + "&cid=" + curData["competitionId"];
+                str += '<a href="' + linkURL + '" target="_blank" class="home">';
+                str += '<img src="' + curData["leftBadge"] + '"/>';
+                str += '<span>' + curData["leftName"] + '</span>';
+                str += '</a>';
+                str += '<div class="score">' + curData["leftGoal"] + '-' + curData["rightGoal"] + '</div>';
+                linkURL = "http://kbs.sports.qq.com/kbsweb/teams.htm?tid=" + curData["rightId"] + "&cid=" + curData["competitionId"];
+                str += '<a href="' + linkURL + '" target="_blank" class="away">';
+                str += '<img src="' + curData["rightBadge"] + '"/>';
+                str += '<span>' + curData["rightName"] + '</span>';
+                str += '</a>';
+                str += '</div>';
+                str += '<div class="right">';
+                linkURL = "http://kbs.sports.qq.com/kbsweb/game.htm?mid=" + curData["mid"];
+                str += '<a href="' + linkURL + '" target="_blank" class="video">视频集锦</a>';
+                str += '<a href="' + linkURL + '&replay=1" target="_blank" class="playBack">比赛回放</a>';
+                str += '</div>';
+                str += '</li>';
+            });
+            str += '</ul>';
+            str += '</div>';
+        });
+    }
+    $match.children("div").eq(0).html(str);
+    $myScroll.refresh();
+}
+function bindMatch() {
+    var strIn = Math.abs(parseFloat($calendarUL.css("left"))) / 105,
+        endIn = strIn + 6;
+    var strTime = $calendarList.eq(strIn).attr("time"),
+        endTime = $calendarList.eq(endIn).attr("time");
+
+    $.ajax({
+        url: "http://matchweb.sports.qq.com/kbs/list?columnId=100000&startTime=" + strTime + "&endTime=" + endTime,
+        type: "get",
+        dataType: "jsonp",
+        jsonpCallback: "gameList"
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
