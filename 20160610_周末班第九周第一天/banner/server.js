@@ -9,18 +9,18 @@ var server = http.createServer(function (req, res) {
 
     //->资源文件的路由判断
     var reg = /\.(TXT|JSON|HTML|CSS|JS|PNG|JPG|GIF|JPEG|SVG|ICON|ICO|MP3|OGG|WAV|MP4|WEBM|BMP)/i;
-    try {
-        if (reg.test(pathname)) {
+    if (reg.test(pathname)) {
+        try {
             var suffix = reg.exec(pathname)[1].toUpperCase();
             var suffixType = routing.suffixType(suffix);
             var conFile = /(HTML|JSON|CSS|JS|TXT|SVG)/i.test(suffix) ? fs.readFileSync("." + pathname, "utf8") : fs.readFileSync("." + pathname);
             res.writeHead(200, {'content-type': suffixType + ";charset=utf-8"});
             res.end(conFile);
-            return;
+        } catch (e) {
+            res.writeHead(404);
+            res.end();
         }
-    } catch (e) {
-        res.writeHead(404);
-        res.end();
+        return;
     }
 
     if (pathname === "/bannerInfo") {

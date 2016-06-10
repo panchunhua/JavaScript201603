@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>珠峰培训-移动端轮播图</title>
+    <link type="text/css" rel="stylesheet" href="css/swiper.min.css"/>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            -webkit-touch-callout: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        html {
+            -webkit-text-size-adjust: none;
+        }
+
+        body {
+            -webkit-user-select: none;
+            font-family: "\5FAE\8F6F\96C5\9ED1", Helvetica, sans-serif;
+            font-size: 12px;
+            color: #424242;
+        }
+
+        header, footer, nav, section, aside, figure, figcaption, article, audio, video {
+            display: block;
+        }
+
+        input {
+            outline: none;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        a, a:hover, a:active, a:visited, a:target {
+            text-decoration: none;
+            color: #424242;
+        }
+
+        img {
+            display: block;
+            border: none;
+        }
+
+        .clear:after {
+            display: block;
+            height: 0;
+            content: "";
+            clear: both;
+        }
+
+        /*--以上是公共样式:清除各自标签的默认样式--*/
+
+        .swiper-container {
+            height: 150px;
+        }
+
+        .swiper-slide {
+            font-size: 20px;
+            line-height: 150px;
+            text-align: center;
+        }
+
+        .swiper-slide.red {
+            background: red;
+        }
+
+        .swiper-slide.green {
+            background: green;
+        }
+
+        .swiper-slide.orange {
+            background: orange;
+        }
+    </style>
+</head>
+<body>
+<section class="swiper-container">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide red">1</div>
+        <div class="swiper-slide green">2</div>
+        <div class="swiper-slide orange">3</div>
+    </div>
+    <!--轮播图区域焦点(小圆点)-->
+    <div class="swiper-pagination"></div>
+</section>
+
+<script charset="utf-8" type="text/javascript" src="js/swiper.min.js"></script>
+<script type="text/javascript">
+    var mySwiper = new Swiper('.swiper-container', {
+        //direction: 'vertical', //->控制滑动的方向,默认不写是横向,属性值是vertical,代表竖向滑动
+        loop: true,//->控制是否循环实现滑动切换:滑动到末尾的位置之后,从第一张继续开始,默认值是false
+        pagination: ".swiper-pagination",//->控制分页器显示的样式
+        effect: "slide"//->增加切换的效果:默认是slide(位移切换) "fade"（淡入）"cube"（方块）"coverflow"（3d流）"flip"（3d翻转）
+    });
+</script>
+</body>
+</html>
