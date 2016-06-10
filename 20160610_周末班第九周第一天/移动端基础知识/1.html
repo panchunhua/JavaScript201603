@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title>珠峰培训-横屏和竖屏检测</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        html {
+            font-size: 100px;
+            /*--640PX的设计稿中我们设置的基准值:100PX=1REM--*/
+        }
+
+        #box {
+            margin: .2rem;
+            height: 2rem;
+            /*--在移动端使用H5或者CSS3新提供的属性,一但需要增加前缀“-webkit-”,必须写两套：一套加前缀,一套不加前缀,只有这样大部分安卓手机才会兼容--*/
+            background: -webkit-linear-gradient(top left, #41beff, #96E555, #e68300);
+            background: linear-gradient(top left, #41beff, #96E555, #e68300);
+        }
+
+        /*--使用CSS3检测横竖屏:portrait(竖屏)/landscape(横屏)--*/
+        @media all and (orientation: landscape) {
+            #box {
+                background: red;
+            }
+        }
+    </style>
+
+</head>
+<body>
+<div id="box">
+
+</div>
+
+<script type="text/javascript">
+    //->JS中根据屏幕的尺寸,动态的设置REM基准值
+    ~function (desW) {
+        var winW = document.documentElement.clientWidth;
+        document.documentElement.style.fontSize = winW / desW * 100 + "px";
+    }(640);
+
+    //->JS中的横竖屏检测
+    ~function () {
+        var oBox = document.getElementById("box");
+        var suppChange = "onorientationchange" in window,
+                event = suppChange ? "orientationchange" : "resize";
+        window.addEventListener(event, function () {
+            if (suppChange) {
+                if (Math.abs(window.orientation) === 90) {
+                    //->当前检测出来是横屏
+                    oBox.innerHTML = "横-" + window.orientation;
+                } else {
+                    oBox.innerHTML = "竖-" + window.orientation;
+                }
+            }
+        }, false);
+    }();
+</script>
+</body>
+</html>
