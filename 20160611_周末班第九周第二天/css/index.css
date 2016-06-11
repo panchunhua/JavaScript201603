@@ -166,8 +166,189 @@ html {
     height: 100%;
 }
 
+.video-js .vjs-big-play-button {
+    top: 50%;
+    left: 50%;
+    margin: -25px 0 0 -25px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
 
+/*--match start--*/
+.match {
+    box-sizing: border-box; /*--CSS3新增加的盒子模型:我们盒子的宽度WIDTH值包含border、padding、内容宽度--*/
+    padding: .15rem;
+    background: #fff;
+    overflow: hidden;
+}
 
+/*-TOP-*/
+.match .top {
+    height: .3rem;
+    line-height: .3rem;
+}
+
+.match .top > div {
+    float: left;
+    width: 33%;
+    height: 100%;
+}
+
+.match .top > div.time {
+    width: 34%;
+    font-size: .12rem;
+    color: #999;
+    text-align: center;
+}
+
+.match .top > div.away {
+    float: right;
+}
+
+.match .top img {
+    display: block;
+    width: .32rem;
+    height: .3rem;
+}
+
+.match .top span {
+    display: block;
+    height: 100%;
+    font-size: .2rem;
+    color: #333;
+}
+
+.match .top .home img, .match .top .home span {
+    float: left;
+}
+
+.match .top .home span {
+    padding-left: .12rem;
+}
+
+.match .top .away img, .match .top .away span {
+    float: right;
+}
+
+.match .top .away span {
+    padding-right: .12rem;
+}
+
+/*-MID-*/
+.match .mid {
+    margin: .1rem 0;
+    height: .02rem;
+    background: #1C90F2;
+    overflow: hidden;
+}
+
+.match .mid span {
+    display: block;
+    width: 0%;
+    height: 100%;
+    background: #f82d2d;
+}
+
+/*-BOT-*/
+.match .bot {
+    height: .2rem;
+    line-height: .2rem;
+    text-align: center;
+    overflow: hidden;
+}
+
+.match .bot > div {
+    float: left;
+    width: 33%;
+    height: 100%;
+    color: #bbb;
+    font-size: .12rem;
+}
+
+.match .bot > div.type {
+    width: 34%;
+    color: #999;
+}
+
+.match .bot .home {
+    background: url("../img/support-left.png") no-repeat left center;
+    background-size: .12rem .12rem;
+}
+
+.match .bot .away {
+    background: url("../img/support-right.png") no-repeat right center;
+    background-size: .12rem .12rem;
+}
+
+.match .bot .home.bg {
+    background-image: url("../img/support-red.png");
+    color: #f82d2d;
+}
+
+.match .bot .away.bg {
+    background-image: url("../img/support-blue.png");
+    color: #1C90F2;
+}
+
+/*--player start--*/
+.player {
+    padding: .1rem .15rem;
+    height: 1.11rem;
+    background: #fff;
+    overflow: hidden;
+}
+
+.player .wrapper {
+    position: relative;
+    height: 100%;
+}
+
+.player .wrapper ul {
+    height: 100%;
+}
+
+.player .wrapper li {
+    float: left;
+    margin-left: .1rem;
+    width: 1.1rem;
+    height: 100%;
+}
+
+.player .wrapper li:nth-child(1) {
+    margin-left: 0;
+}
+
+.player .wrapper li > div {
+    position: relative;
+    height: .62rem;
+}
+
+.player .wrapper li > div img {
+    width: 100%;
+    height: 100%;
+}
+
+.player .wrapper li > div span {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: .04rem;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: .12rem;
+}
+
+.player .wrapper li > p {
+    margin-top: .04rem;
+    line-height: .15rem;
+    font-size: .12rem;
+    color: #333;
+}
+
+.player .wrapper li.bg > p {
+    color: #f82d2d;
+}
 
 
 
